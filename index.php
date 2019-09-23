@@ -47,8 +47,14 @@ echo "<br>";
 
 try{
     $contaJoao->transferir(-10,$contaMaria);
-}catch(Exception $error){
+}catch(InvalidArgumentException $error){
+    echo "invalid argument";
     echo $error->getMessage();
+
+}catch(Exception $error){
+    echo "exception";
+    echo $error->getMessage();
+
 }
 
 echo "<br>";
