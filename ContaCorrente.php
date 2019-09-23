@@ -16,6 +16,8 @@ class ContaCorrente{
 
 	public static $taxaOperacao;
 
+	public $totalSaquesNaoPermitidos;
+
 
 
 	public function __construct($titular,$agencia,$numero,$saldo){

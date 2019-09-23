@@ -1,7 +1,8 @@
 <?php
 
+namespace exception;
 
-class SaldoInsuficienteException extends Exception{
+class SaldoInsuficienteException extends \Exception{
 
     public function __construct($mensagem,$codigo = null,$ex = null){
 

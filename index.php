@@ -9,6 +9,7 @@
 
 use Validacao;
 use ContaCorrente;
+use exception\SaldoInsuficienteException;
 
 
 
@@ -51,11 +52,16 @@ echo "<br>";
 try{
     $contaJoao->transferir(2300,$contaMaria);
 
-}catch(InvalidArgumentException $error){
+}catch(\InvalidArgumentException $error){
     echo "invalid argument";
     echo $error->getMessage();
 
-}catch(Exception $error){
+}catch(\exception\SaldoInsuficienteException $error){
+    $contaJoao->totalSaquesNaoPermitidos ++;
+    echo "capturando exception";
+    echo $error->getMessage();
+
+}catch(\Exception $error){
     echo "exception";
     echo $error->getMessage();
 
