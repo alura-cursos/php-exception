@@ -56,7 +56,7 @@ try{
     echo $erro->getMessage();
 
 }catch(\exception\SaldoInsuficienteException $erro){
-    echo $erro->getMessage()." <b>Saldo em conta: ".$erro->saldo." Valor do saque: ".$erro->saque."</b>";
+    echo $erro->getMessage()." <b>Saldo em conta: ".$erro->saldo." Valor do saque: ".$erro->valor."</b>";
 
     $contaJoao->totalSaquesNaoPermitidos ++;
 

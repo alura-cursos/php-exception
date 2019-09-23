@@ -9,6 +9,9 @@ class SaldoInsuficienteException extends \Exception{
 
     public function __construct($mensagem,$valor,$saldo){
 
+        $this->valor = $valor;
+        $this->saldo = $saldo;
+        
         parent::__construct($mensagem,null,null);
 
     }
