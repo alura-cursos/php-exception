@@ -66,9 +66,11 @@ class ContaCorrente{
 	public function transferir($valor, ContaCorrente $contaCorrente){
 
 		if(!is_numeric($valor)){
-			echo "o Tipo passado nao é um numero valido";
+			throw new InvalidArgumentException("o valor passado não é um número!");
+		}
 
-			exit;
+		if($valor < 0){
+			throw new Exception("o valor não é permitido");
 		}
 
 		$this->sacar($valor);
