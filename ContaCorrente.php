@@ -25,7 +25,7 @@ class ContaCorrente{
 		$this->saldo = $saldo;
 
 		try{
-			self::$taxaOperacao = 30 / intDiv(30,self::$totalDeContas);
+			self::$taxaOperacao = intDiv(30,self::$totalDeContas);
 
 		}catch(Error $e){
 			echo "Não é possivel realizar divisão por zero";
