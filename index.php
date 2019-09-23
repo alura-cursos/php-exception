@@ -16,12 +16,20 @@ $contaJoao = new ContaCorrente("Joao","1212","343477-9",2000.00);
 $contaMaria = new ContaCorrente("Maria","1212","343423-9",6000.00);
 $contaJose = new ContaCorrente("Jose","1212","343423-9",6000.00);
 
+$contaJose = new ContaCorrente("Jose","1212","343423-9",6000.00);
 
-echo ContaCorrente::$totalDeContas;
+$contaJose = new ContaCorrente("Jose","1212","343423-9",6000.00);
+
+$contaJose = new ContaCorrente("Jose","1212","343423-9",6000.00);
+
+$contaJose = new ContaCorrente("Jose","1212","343423-9",6000.00);
+
+
+echo "total de contas: ".ContaCorrente::$totalDeContas;
 
 echo "<br>";
 
-echo ContaCorrente::$taxaOperacao;
+echo "taxa: ".ContaCorrente::$taxaOperacao;
 
 
 

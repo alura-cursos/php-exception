@@ -24,15 +24,23 @@ class ContaCorrente{
 		$this->numero = $numero;
 		$this->saldo = $saldo;
 
-		try{
-			self::$taxaOperacao = intDiv(30,self::$totalDeContas);
+		self::$totalDeContas ++;
 
-		}catch(Error $e){
-			echo "Não é possivel realizar divisão por zero";
+
+		try{
+			if(self::$totalDeContas < 1 ){
+				throw new Exception("Valor inferior a zero!");
+
+			}
+			self::$taxaOperacao = (30/self::$totalDeContas);
+
+		}catch(Exception $erro){
+			echo $erro->getMessage();
 			exit;
 		}
 
-		self::$totalDeContas ++;
+
+
 
 	}
 
