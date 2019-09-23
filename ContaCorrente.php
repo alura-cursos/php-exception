@@ -23,8 +23,14 @@ class ContaCorrente{
 		$this->agencia = $agencia;
 		$this->numero = $numero;
 		$this->saldo = $saldo;
-		
-		self::$taxaOperacao = 30 / self::$totalDeContas;
+
+		try{
+			self::$taxaOperacao = 30 / intDiv(30,self::$totalDeContas);
+
+		}catch(Error $e){
+			echo "Não é possivel realizar divisão por zero";
+			exit;
+		}
 
 		self::$totalDeContas ++;
 
