@@ -70,6 +70,13 @@ class ContaCorrente{
 	public function transferir($valor, ContaCorrente $contaCorrente){
 
 		try{
+			$arquivo = new LeitorArquivo("logTransferencia.txt");
+
+
+			$arquivo->abrirArquivo();
+			$arquivo->escreverNoArquivo();
+
+
 			Validacao::verificaNumerico($valor);
 
 			Validacao::verificaValorNegativo($valor);
@@ -78,12 +85,18 @@ class ContaCorrente{
 
 			$contaCorrente->depositar($valor);
 
+			$arquivo->fecharArquivo();
+
 			return $this;
 
 		}catch(\Exception $e){
 
 			ContaCorrente::$operacaoNaoRealizada ++;
 			throw new \exception\OperacaoNaoRealizadaException("Operação não realizada", 55,$e);
+
+		}finally{
+			echo "Finally";
+			$arquivo->fecharArquivo();
 
 		}
 

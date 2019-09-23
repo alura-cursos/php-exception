@@ -48,7 +48,7 @@ echo "<br>";
 
 
 try{
-    $contaJoao->transferir(2300,$contaMaria);
+    $contaJoao->transferir(300000,$contaMaria);
 
 }catch(\InvalidArgumentException $erro){
     echo $erro->getMessage();
