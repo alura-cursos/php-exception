@@ -5,12 +5,10 @@
  header('Content-Type: text/html; charset=utf-8');
 
  include "autoload.php";
+ use Validacao;
+ use ContaCorrente;
 
-
-use Validacao;
-use ContaCorrente;
-use exception\SaldoInsuficienteException;
-
+echo "<pre>";
 
 
 
@@ -61,7 +59,10 @@ try{
     $contaJoao->totalSaquesNaoPermitidos ++;
 
 }catch(\Exception $erro){
-    echo $erro->getMessage();
+    //var_dump($erro->getPrevious());
+    echo $erro->getPrevious()->getTraceAsString();
+    //echo "<b>".$erro->getPrevious()->getMessage()."</b>";
+    //echo $erro->getMessage();
 
 }
 
