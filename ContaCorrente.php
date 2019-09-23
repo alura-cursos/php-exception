@@ -18,6 +18,7 @@ class ContaCorrente{
 
 	public $totalSaquesNaoPermitidos;
 
+	public static $operacaoNaoRealizada;
 
 
 	public function __construct($titular,$agencia,$numero,$saldo){
@@ -68,17 +69,23 @@ class ContaCorrente{
 
 	public function transferir($valor, ContaCorrente $contaCorrente){
 
-		Validacao::verificaNumerico($valor);
+		try{
+			Validacao::verificaNumerico($valor);
 
-		if($valor < 0){
-			throw new Exception("o valor não é permitido");
+			Validacao::verificaValorNegativo($valor);
+
+			$this->sacar($valor);
+
+			$contaCorrente->depositar($valor);
+
+			return $this;
+
+		}catch(\Exception $e){
+
+			ContaCorrente::$operacaoNaoRealizada ++;
+			throw new \exception\OperacaoNaoRealizadaException("Operação não realizada", 55,$e);
+
 		}
-
-		$this->sacar($valor);
-
-		$contaCorrente->depositar($valor);
-
-		return $this;
 
 	}
 
@@ -90,6 +97,7 @@ class ContaCorrente{
 
 		Validacao::verificaNumerico($valor);
 		Validacao::verificaValorNegativo($valor);
+
 
 
 		if($valor > $this->saldo){

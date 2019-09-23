@@ -66,4 +66,7 @@ try{
 }
 
 echo "<br>";
+
+echo "Operações não realizadas: ".ContaCorrente::$operacaoNaoRealizada;
+echo "<br>";
 var_dump($contaJoao);
