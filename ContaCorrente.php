@@ -89,9 +89,11 @@ class ContaCorrente{
 	public function sacar($valor){
 
 		Validacao::verificaNumerico($valor);
+		Validacao::verificaValorNegativo($valor);
+
 
 		if($valor > $this->saldo){
-			throw new SaldoInsuficienteException("saldo insuficiente");
+			throw new SaldoInsuficienteException("saldo insuficiente",$valor,$this->saldo);
 
 		}
 

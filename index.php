@@ -52,18 +52,16 @@ echo "<br>";
 try{
     $contaJoao->transferir(2300,$contaMaria);
 
-}catch(\InvalidArgumentException $error){
-    echo "invalid argument";
-    echo $error->getMessage();
+}catch(\InvalidArgumentException $erro){
+    echo $erro->getMessage();
 
-}catch(\exception\SaldoInsuficienteException $error){
+}catch(\exception\SaldoInsuficienteException $erro){
+    echo $erro->getMessage()." <b>Saldo em conta: ".$erro->saldo." Valor do saque: ".$erro->saque."</b>";
+
     $contaJoao->totalSaquesNaoPermitidos ++;
-    echo "capturando exception";
-    echo $error->getMessage();
 
-}catch(\Exception $error){
-    echo "exception";
-    echo $error->getMessage();
+}catch(\Exception $erro){
+    echo $erro->getMessage();
 
 }
 

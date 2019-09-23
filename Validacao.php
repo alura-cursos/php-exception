@@ -21,6 +21,14 @@ class Validacao{
 		}
 	}
 
+	public static function verificaValorNegativo($valor){
+
+		if($valor < 0){
+			throw new InvalidArgumentException("o valor não é permitido");
+
+		}
+	}
+
 
 
 }

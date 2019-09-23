@@ -4,10 +4,18 @@ namespace exception;
 
 class SaldoInsuficienteException extends \Exception{
 
-    public function __construct($mensagem,$codigo = null,$ex = null){
+    private $valor;
+    private $saldo;
 
-        parent::__construct($mensagem,$codigo,$ex);
+    public function __construct($mensagem,$valor,$saldo){
 
+        parent::__construct($mensagem,null,null);
+
+    }
+
+    public function __get($param){
+
+        return $this->$param;
     }
 }
 ?>
