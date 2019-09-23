@@ -1,5 +1,6 @@
 <?php
 
+require "exception/SaldoInsuficienteException.php";
 
 class ContaCorrente{
 
@@ -65,9 +66,7 @@ class ContaCorrente{
 
 	public function transferir($valor, ContaCorrente $contaCorrente){
 
-		if(!is_numeric($valor)){
-			throw new InvalidArgumentException("o valor passado não é um número!");
-		}
+		Validacao::verificaNumerico($valor);
 
 		if($valor < 0){
 			throw new Exception("o valor não é permitido");
@@ -88,6 +87,11 @@ class ContaCorrente{
 	public function sacar($valor){
 
 		Validacao::verificaNumerico($valor);
+
+		if($valor > $this->saldo){
+			throw new SaldoInsuficienteException("saldo insuficiente");
+
+		}
 
 		$this->saldo = $this->saldo - $valor;
 		return $this;

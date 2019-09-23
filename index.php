@@ -45,17 +45,11 @@ echo "<h2>Conta Corrente: Titular: ".$contaJoao->getTitular()."</h2>";
 var_dump($contaJoao);
 echo "<br>";
 
-try{
-    $contaJoao["teste"];
-
-}catch(Error $error){
-    
-    echo "<b>".$error->getMessage()."</b><br />";
-}
 
 
 try{
-    $contaJoao->transferir(-10,$contaMaria);
+    $contaJoao->transferir(2300,$contaMaria);
+
 }catch(InvalidArgumentException $error){
     echo "invalid argument";
     echo $error->getMessage();
