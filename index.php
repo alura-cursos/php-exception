@@ -4,10 +4,11 @@
  error_reporting(E_ALL);
  header('Content-Type: text/html; charset=utf-8');
 
+ include "autoload.php";
 
 
-require "Validacao.php";
-require "ContaCorrente.php";
+use Validacao;
+use ContaCorrente;
 
 
 

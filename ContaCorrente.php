@@ -1,6 +1,6 @@
 <?php
 
-require "exception/SaldoInsuficienteException.php";
+use exception\SaldoInsuficienteException;
 
 class ContaCorrente{
 
